@@ -4,7 +4,7 @@ import mc from './mc.jpg'
 
 function Photo(){
   const photoStyles = {
-    maxSize: '100%'
+    maxWidth: '100%'
   }
   return (
     <React.Fragment>

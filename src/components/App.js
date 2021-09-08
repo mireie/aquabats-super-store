@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import { Container, Row, Col } from "react-bootstrap"
-import NewProductControl from "./NewProductControl"
+import ProductControl from "./ProductControl"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,7 +15,7 @@ function App() {
           </div>
           <Col>
           New Product Control goes here
-            {/* <NewProductControl /> */}
+            <ProductControl />
           </Col>
         </Row>
       </Container>
