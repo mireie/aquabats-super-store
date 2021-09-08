@@ -18,7 +18,7 @@ class ProductControl extends React.Component {
       }, {
         name: "Test 2 Product",
         description: "Test 2 Description",
-        quantity: 102,
+        quantity: 5,
         id: "test-id-2"
       }],
       selectedProduct: null
@@ -65,6 +65,9 @@ class ProductControl extends React.Component {
   handleSubtractStock = (productToEdit) => {
     let updatedProduct = productToEdit
     updatedProduct.quantity--
+    if (updatedProduct.quantity < 0) {
+      updatedProduct.quantity = 0
+    }
     const editedMainProductList = this.state.mainProductList
       .filter(product => product.id !== productToEdit.id)
       .concat(updatedProduct)

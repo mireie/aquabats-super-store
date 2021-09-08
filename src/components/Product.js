@@ -4,10 +4,16 @@ import { Button, Card } from "react-bootstrap"
 
 function Product(props) {
   const prod = {name: props.name, description: props.description, quantity: props.quantity, id: props.id}
+
+  let subtract = "Subtract 1"
+  if (prod.quantity === 0) {
+    subtract = "Out of Stock"
+  }
+
   return (
     <React.Fragment>
-      <div className="col-4">
-        <Card style={{ width: '18rem' }}>
+      <div className="col-6">
+        <Card>
           <Card.Body>
             <Card.Title onClick={() => props.whenProductClicked(props.id)}>{props.name}</Card.Title>
             <Card.Text>
@@ -31,7 +37,7 @@ function Product(props) {
               className="m-3"
               onClick={() => props.stockMinus(prod)}
               >
-              Subtract 1
+              {subtract}
             </Button>
           </Card.Body>
         </Card>
