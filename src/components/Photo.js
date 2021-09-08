@@ -1,5 +1,4 @@
 import React from "react";
-import { mockComponent } from "react-dom/test-utils";
 import mc from './mc.jpg'
 
 function Photo(){

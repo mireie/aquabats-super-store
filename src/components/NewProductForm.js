@@ -54,7 +54,7 @@ function NewProductForm(props) {
 }
 
 NewProductForm.propTypes = {
-  onNewProductCreation: PropTypes.func
+  onNewProductCreation: PropTypes.func //inherited from parent. Function from controller handleaddingnewproducttolist
 }
 
 export default NewProductForm

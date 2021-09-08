@@ -14,7 +14,9 @@ function App() {
             <Sidebar />
           </div>
           <Col>
-            <ProductControl />
+            <Row>
+              <ProductControl />
+            </Row>
           </Col>
         </Row>
       </Container>
