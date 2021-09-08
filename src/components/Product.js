@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap"
 
 function Product(props) {
-  const prod = {name: props.name, description: props.description, quantity: props.quantity, id: props.id}
+  const prod = { name: props.name, description: props.description, quantity: props.quantity, id: props.id }
 
   let subtract = "Subtract 1"
   if (prod.quantity === 0) {
@@ -18,17 +18,17 @@ function Product(props) {
             <Card.Title onClick={() => props.whenProductClicked(props.id)}>{props.name}</Card.Title>
             <Card.Text>
               {props.description}
-              </Card.Text>
-              <ul>
-                <li>Quantity: {props.quantity}</li>
-                <li>ID: {props.id}</li>
-              </ul>
+            </Card.Text>
+            <ul>
+              <li>Quantity: {props.quantity}</li>
+              <li>ID: {props.id}</li>
+            </ul>
             <Button
               type="submit"
               variant="success"
               className="m-3"
               onClick={() => props.stockPlus(prod)}
-              >
+            >
               Add 1
             </Button>
             <Button
@@ -36,7 +36,7 @@ function Product(props) {
               variant="warning"
               className="m-3"
               onClick={() => props.stockMinus(prod)}
-              >
+            >
               {subtract}
             </Button>
           </Card.Body>

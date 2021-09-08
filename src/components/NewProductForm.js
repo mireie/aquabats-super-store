@@ -26,8 +26,8 @@ function NewProductForm(props) {
           <Form.Control
             type="text"
             name="name"
-            // required
-            >
+          // required
+          >
           </Form.Control>
         </Form.Group>
         <Form.Group

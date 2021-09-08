@@ -1,7 +1,7 @@
 import React from "react";
 import mc from './mc.jpg'
 
-function Photo(){
+function Photo() {
   const photoStyles = {
     maxWidth: '100%'
   }

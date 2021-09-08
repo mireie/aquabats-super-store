@@ -1,6 +1,6 @@
 import React from "react";
 
-function About(){
+function About() {
   return (
     <React.Fragment>
       <p>Hey McCommander Batty here! Welcome to our SUPER-RAD Aquabat merch site!</p>

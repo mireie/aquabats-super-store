@@ -47,20 +47,19 @@ class ProductControl extends React.Component {
     })
   }
 
-
   handleAddingNewProductToList = (newProduct) => {
     if (newProductValid(newProduct)) {
-    const newMainProductList = this.state.mainProductList.concat(newProduct);
-    this.setState({
-      mainProductList: newMainProductList,
-      newProductFormVisible: false
-    })
+      const newMainProductList = this.state.mainProductList.concat(newProduct);
+      this.setState({
+        mainProductList: newMainProductList,
+        newProductFormVisible: false
+      })
     } else {
       this.setState({
-      newProductFormVisible: false
+        newProductFormVisible: false
       })
     }
-  } // passing down function with empty params
+  }
 
   handleChangingSelectedProduct = (id) => {
     const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
@@ -96,10 +95,10 @@ class ProductControl extends React.Component {
     let visibleState = null;
     let buttonText = null;
     if (this.state.selectedProduct != null) {
-      visibleState = <ProductDetail 
-        product={this.state.selectedProduct} 
+      visibleState = <ProductDetail
+        product={this.state.selectedProduct}
         deleteProduct={this.handleDeletingProductFromList}
-        />
+      />
       buttonText = "Head back to Product List, Cadet!"
     } else if (this.state.newProductFormVisible) {
       visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
@@ -142,7 +141,6 @@ const dynamicSort = (property) => {
     return result * sortOrder;
   }
 }
-
 
 function newProductValid(newProduct) {
   if (newProduct.name && newProduct.quantity && newProduct.description) {

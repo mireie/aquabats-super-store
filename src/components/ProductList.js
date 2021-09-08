@@ -7,9 +7,9 @@ function ProductList(props) {
     <React.Fragment>
       {props.productList.map((product) =>
         <Product name={product.name}
-          whenProductClicked= {props.onProductSelection}
-          stockPlus = {props.addStock}
-          stockMinus = {props.subtractStock}
+          whenProductClicked={props.onProductSelection}
+          stockPlus={props.addStock}
+          stockMinus={props.subtractStock}
           description={product.description}
           quantity={product.quantity}
           id={product.id}

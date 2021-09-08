@@ -13,7 +13,7 @@ function ProductDetail(props) {
       <Button
         className="btn-danger"
         onClick={() => props.deleteProduct(product.id)}
-          > Delete</Button>
+      > Delete</Button>
     </React.Fragment >
   )
 }
