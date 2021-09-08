@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <React.Fragment>
-      <Container>
+      <Container className="mt-3">
         <Row>
           <div className="col-4">
             <Sidebar />

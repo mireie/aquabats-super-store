@@ -38,12 +38,28 @@ class ProductControl extends React.Component {
     }
   }
 
+  handleDeletingProductFromList = (id) => {
+    const editedMainProductList = this.state.mainProductList
+      .filter(product => product.id !== id)
+    this.setState({
+      mainProductList: editedMainProductList,
+      selectedProduct: null
+    })
+  }
+
+
   handleAddingNewProductToList = (newProduct) => {
+    if (newProductValid(newProduct)) {
     const newMainProductList = this.state.mainProductList.concat(newProduct);
     this.setState({
       mainProductList: newMainProductList,
       newProductFormVisible: false
     })
+    } else {
+      this.setState({
+      newProductFormVisible: false
+      })
+    }
   } // passing down function with empty params
 
   handleChangingSelectedProduct = (id) => {
@@ -76,13 +92,14 @@ class ProductControl extends React.Component {
     })
   }
 
-  
-
   render() {
     let visibleState = null;
     let buttonText = null;
     if (this.state.selectedProduct != null) {
-      visibleState = <ProductDetail product={this.state.selectedProduct} />
+      visibleState = <ProductDetail 
+        product={this.state.selectedProduct} 
+        deleteProduct={this.handleDeletingProductFromList}
+        />
       buttonText = "Head back to Product List, Cadet!"
     } else if (this.state.newProductFormVisible) {
       visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
@@ -127,27 +144,8 @@ const dynamicSort = (property) => {
 }
 
 
-
-// handleEditingTicketInList = (ticketToEdit) => {
-//   const editedMasterTicketList = this.state.masterTicketList
-//     .filter(ticket => ticket.id !== this.state.selectedTicket.id)
-//     .concat(ticketToEdit);
-//   this.setState({
-//       masterTicketList: editedMasterTicketList,
-//       editing: false,
-//       selectedTicket: null
-//     });
-// }
-
-
-
-// onClick={() => props.whenProductClicked(props.id)}
-
-//  Product prop
-//  whenProductClicked= {props.onProductSelection}
-
-// handleChangingSelectedProduct = (id) => {
-//   const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
-//   this.setState({selectedProduct: selectedProduct});
-// }
-
+function newProductValid(newProduct) {
+  if (newProduct.name && newProduct.quantity && newProduct.description) {
+    return true
+  }
+}

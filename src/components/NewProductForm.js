@@ -25,7 +25,10 @@ function NewProductForm(props) {
           <Form.Label>Product Name</Form.Label>
           <Form.Control
             type="text"
-            name="name"></Form.Control>
+            name="name"
+            // required
+            >
+          </Form.Control>
         </Form.Group>
         <Form.Group
           className="mb-3"
@@ -33,7 +36,9 @@ function NewProductForm(props) {
           <Form.Label>Product Description</Form.Label>
           <Form.Control
             as="textarea"
-            rows={3} name="description" />
+            rows={3}
+            name="description"
+            required />
         </Form.Group>
         <Form.Group
           className="mb-3"
@@ -41,7 +46,9 @@ function NewProductForm(props) {
           <Form.Label>Quantity</Form.Label>
           <Form.Control
             type="number"
-            name="quantity" />
+            name="quantity"
+            min="0"
+            required />
         </Form.Group>
         <Button
           variant="primary"
