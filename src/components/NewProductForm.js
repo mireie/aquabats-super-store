@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 } from 'uuid'
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+import { Form, Button } from 'react-bootstrap'
 
 function NewProductForm(props) {
   function handleNewProductFormSubmission(event) {
@@ -16,21 +17,38 @@ function NewProductForm(props) {
   }
   return (
     <React.Fragment>
-      <form onSubmit={handleNewProductFormSubmission}>
-        <input
-          type='text'
-          name='name'
-          placeholder='Product Name' />
-        <input
-          type='textArea'
-          name='description'
-          placeholder='Product Description' />
-        <input
-          type='number'
-          name='quantity'
-          placeholder='0' />
-          <button type="submit">Add Item!</button>
-      </form>
+      <h2>Add a Product</h2>
+      <Form onSubmit={handleNewProductFormSubmission}>
+        <Form.Group
+          className="mb-3"
+          controlId="productName">
+          <Form.Label>Product Name</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"></Form.Control>
+        </Form.Group>
+        <Form.Group
+          className="mb-3"
+          controlId="productDescription">
+          <Form.Label>Product Description</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3} name="description" />
+        </Form.Group>
+        <Form.Group
+          className="mb-3"
+          controlId="produtQuantity">
+          <Form.Label>Quantity</Form.Label>
+          <Form.Control
+            type="number"
+            name="quantity" />
+        </Form.Group>
+        <Button
+          variant="primary"
+          type="submit">
+          Add Product
+        </Button>
+      </Form>
     </React.Fragment>
   )
 }

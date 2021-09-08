@@ -14,7 +14,6 @@ function App() {
             <Sidebar />
           </div>
           <Col>
-          New Product Control goes here
             <ProductControl />
           </Col>
         </Row>
