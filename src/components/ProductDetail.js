@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Button } from "react-bootstrap"
+import { Button, Row, Col } from "react-bootstrap"
 
 function ProductDetail(props) {
   const { product } = props;
@@ -10,10 +10,20 @@ function ProductDetail(props) {
       <h1>{product.name}</h1>
       <p>{product.description}</p>
       <p>Quantity: {product.quantity}</p>
-      <Button
-        className="btn-danger"
-        onClick={() => props.deleteProduct(product.id)}
-      > Delete</Button>
+      <Row>
+        <Col>
+          <Button
+            className="btn-warning"
+            onClick={() => props.editProduct(product.id)}
+          > Edit</Button>
+        </Col>
+        <Col>
+          <Button
+            className="btn-danger"
+            onClick={() => props.deleteProduct(product.id)}
+          > Delete</Button>
+        </Col>
+      </Row>
     </React.Fragment >
   )
 }

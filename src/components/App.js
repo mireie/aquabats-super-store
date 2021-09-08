@@ -10,7 +10,7 @@ function App() {
     <React.Fragment>
       <Container className="mt-3">
         <Row>
-          <div className="col-4">
+          <div className="col-md-4">
             <Sidebar />
           </div>
           <Col>

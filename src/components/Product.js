@@ -12,7 +12,7 @@ function Product(props) {
 
   return (
     <React.Fragment>
-      <div className="col-6">
+      <div className="col-6 mb-3">
         <Card>
           <Card.Body>
             <Card.Title onClick={() => props.whenProductClicked(props.id)}>{props.name}</Card.Title>

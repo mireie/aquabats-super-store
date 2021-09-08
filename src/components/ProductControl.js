@@ -3,6 +3,7 @@ import ProductList from "./ProductList";
 import NewProductForm from "./NewProductForm";
 import { Button } from "react-bootstrap"
 import ProductDetail from "./ProductDetail"
+import EditProduct from "./EditProduct"
 
 class ProductControl extends React.Component {
 
@@ -21,7 +22,8 @@ class ProductControl extends React.Component {
         quantity: 5,
         id: "test-id-2"
       }],
-      selectedProduct: null
+      selectedProduct: null,
+      edit: false
     }
   }
 
@@ -41,6 +43,23 @@ class ProductControl extends React.Component {
   handleDeletingProductFromList = (id) => {
     const editedMainProductList = this.state.mainProductList
       .filter(product => product.id !== id)
+    this.setState({
+      mainProductList: editedMainProductList,
+      selectedProduct: null
+    })
+  }
+
+  handleSwitchToEdit = (id) => {
+    const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
+    this.setState({ selectedProduct: selectedProduct, 
+    edit: true });
+  }
+
+
+  handleEditing= (editedProduct) => {
+    const editedMainProductList = this.state.mainProductList
+      .filter(product => product.id !== editedProduct.id)
+      .concat(editedProduct)
     this.setState({
       mainProductList: editedMainProductList,
       selectedProduct: null
@@ -94,10 +113,16 @@ class ProductControl extends React.Component {
   render() {
     let visibleState = null;
     let buttonText = null;
-    if (this.state.selectedProduct != null) {
+
+    if (this.state.edit) {
+      visibleState = <EditProduct
+        product={this.stateSelectedProduct}
+        editProductFunction={this.handleEditing} />
+    } else if (this.state.selectedProduct != null) {
       visibleState = <ProductDetail
         product={this.state.selectedProduct}
         deleteProduct={this.handleDeletingProductFromList}
+        editProduct={this.handleSwitchToEdit}
       />
       buttonText = "Head back to Product List, Cadet!"
     } else if (this.state.newProductFormVisible) {
@@ -116,12 +141,7 @@ class ProductControl extends React.Component {
     return (
       <React.Fragment>
         {visibleState}
-        <Button
-          onClick={this.handleClick}
-          variant="dark"
-          className="mt-3 p-5">
-          {buttonText}
-        </Button>
+        <Button onClick={this.handleClick} variant="dark" className="mt-3 p-5">{buttonText}</Button>
       </React.Fragment>
     )
   }
@@ -132,10 +152,6 @@ export default ProductControl
 
 const dynamicSort = (property) => {
   let sortOrder = 1;
-  if (property[0] === "-") {
-    sortOrder = -1;
-    property = property.substr(1);
-  }
   return function (a, b) {
     const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
     return result * sortOrder;
