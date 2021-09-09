@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Cart Functionality
+
+You have a cart
+you create this [{id: id, quantity: n}, {id: id2, quantity: n2}]
+
+Cart is the child of productControl. 
+  - Product => remove 1 from the product => change the state in the product control => push that item into a cart

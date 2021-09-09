@@ -4,6 +4,7 @@ import NewProductForm from "./NewProductForm";
 import { Button } from "react-bootstrap"
 import ProductDetail from "./ProductDetail"
 import EditProduct from "./EditProduct"
+// import Cart from "./Cart"
 
 class ProductControl extends React.Component {
 
@@ -23,7 +24,8 @@ class ProductControl extends React.Component {
         id: "test-id-2"
       }],
       selectedProduct: null,
-      edit: false
+      edit: false,
+      cart: []
     }
   }
 
@@ -106,17 +108,46 @@ class ProductControl extends React.Component {
     if (updatedProduct.quantity < 0) {
       updatedProduct.quantity = 0
     }
+
+    // cart logic below
+
+    let newCart = this.state.cart
+    let filteredCart = newCart.filter(item => {
+      return item.id === productToEdit.id
+    })
+
+    console.log(filteredCart)
+
+    // if (this.state.cart)
+    const cartProduct = productToEdit
+    const cartItem = {
+      id: cartProduct.id,
+      name: cartProduct.name,
+      quantity: 1
+    }
+    let editedCart = this.state.cart
+
+    // this.state.cart.map (object, index) {
+    //   if (object.id === productToEdit.id) {
+    //     object.quantity ++
+    //   }
+    // }
+
+    editedCart.push(cartItem)
+
     const editedMainProductList = this.state.mainProductList
       .filter(product => product.id !== productToEdit.id)
       .concat(updatedProduct)
     this.setState({
-      mainProductList: editedMainProductList
+      mainProductList: editedMainProductList,
+      cart: editedCart
     })
   }
 
   render() {
     let visibleState = null;
     let buttonText = null;
+    let visibleState2 = false
 
     if (this.state.edit) {
       visibleState = <EditProduct
@@ -144,6 +175,7 @@ class ProductControl extends React.Component {
       />
       buttonText = "Add a product, My fine Aquadet"
     }
+
     return (
       <React.Fragment>
         {visibleState}
@@ -151,7 +183,6 @@ class ProductControl extends React.Component {
       </React.Fragment>
     )
   }
-
 }
 
 export default ProductControl
@@ -169,3 +200,5 @@ function newProductValid(newProduct) {
     return true
   }
 }
+
+// function cartBranch
