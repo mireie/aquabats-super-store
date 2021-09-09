@@ -14,6 +14,7 @@ function ProductForm(props) {
             type="text"
             name="name"
             required
+            defaultValue={props.prodBool ? props.product.name : ""}
           >
           </Form.Control>
         </Form.Group>
@@ -25,6 +26,7 @@ function ProductForm(props) {
             as="textarea"
             rows={3}
             name="description"
+            defaultValue={props.prodBool ? props.product.description : ""}
             required />
         </Form.Group>
         <Form.Group
@@ -35,6 +37,7 @@ function ProductForm(props) {
             type="number"
             name="quantity"
             min="0"
+            defaultValue={props.prodBool ? props.product.quantity : 0}
             required />
         </Form.Group>
         <Button

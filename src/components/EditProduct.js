@@ -3,9 +3,6 @@ import PropTypes from "prop-types"
 import ProductForm from "./ProductForm";
 
 function EditProduct(props) {
-  console.log(props)
-  console.log("this is filler")
-  console.log(props.product)
   function handleEditProductFormSubmission(event) {
     event.preventDefault()
     props.editProductFunction(
@@ -17,13 +14,15 @@ function EditProduct(props) {
       }
     )
   }
-  
+
   return (
     <React.Fragment>
       <h2>Edit Product</h2>
-      <ProductForm 
-      formSubmissionHandler = {handleEditProductFormSubmission}
-      formButtonText = "Edit"
+      <ProductForm
+        formSubmissionHandler={handleEditProductFormSubmission}
+        formButtonText="Edit"
+        product={props.product}
+        prodBool={true}
       ></ProductForm>
     </React.Fragment>
   )

@@ -15,13 +15,14 @@ function NewProductForm(props) {
       }
     )
   }
-  
+
   return (
     <React.Fragment>
       <h2>Add a Product</h2>
       <ProductForm
-      formSubmissionHandler = {handleNewProductFormSubmission}
-      formButtonText = "Add Product"
+        formSubmissionHandler={handleNewProductFormSubmission}
+        formButtonText="Add Product"
+        prodBool={false}
       ></ProductForm>
     </React.Fragment>
   )

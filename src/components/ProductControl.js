@@ -52,12 +52,14 @@ class ProductControl extends React.Component {
 
   handleSwitchToEdit = (id) => {
     const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
-    this.setState({ selectedProduct: selectedProduct, 
-    edit: true });
+    this.setState({
+      selectedProduct: selectedProduct,
+      edit: true
+    });
   }
 
 
-  handleEditing= (editedProduct) => {
+  handleEditing = (editedProduct) => {
     const editedMainProductList = this.state.mainProductList
       .filter(product => product.id !== this.state.selectedProduct["id"])
       .concat(editedProduct)
@@ -120,20 +122,20 @@ class ProductControl extends React.Component {
       visibleState = <EditProduct
         product={this.state.selectedProduct}
         editProductFunction={this.handleEditing}
-        />
-        buttonText = "Stop editing and start fighting the bad guys, Cadet!"
+      />
+      buttonText = "Stop editing and start fighting the bad guys, Cadet!"
     } else if (this.state.selectedProduct != null) {
       visibleState = <ProductDetail
         product={this.state.selectedProduct}
         deleteProduct={this.handleDeletingProductFromList}
         editProduct={this.handleSwitchToEdit}
       />
-        buttonText = "Head back to Product List, Cadet!"
+      buttonText = "Head back to Product List, Cadet!"
     } else if (this.state.newProductFormVisible) {
-        visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
-        buttonText = "Go back to Product List, Cadet!"
+      visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
+      buttonText = "Go back to Product List, Cadet!"
     } else {
-        visibleState = <ProductList
+      visibleState = <ProductList
         productList={this.state.mainProductList.sort(dynamicSort("name"))
         }
         onProductSelection={this.handleChangingSelectedProduct}
