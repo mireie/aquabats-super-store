@@ -107,47 +107,24 @@ class ProductControl extends React.Component {
     updatedProduct.quantity--
     if (updatedProduct.quantity < 0) {
       updatedProduct.quantity = 0
+    } else {
+      const currentCart = this.state.cart
+      const newCart = cartBranche(currentCart, productToEdit)
+      const editedMainProductList = this.state.mainProductList
+        .filter(product => product.id !== productToEdit.id)
+        .concat(updatedProduct)
+      this.setState({
+        mainProductList: editedMainProductList,
+        cart: newCart
+      })
+      console.log(newCart)
     }
-
-    // cart logic below
-
-    let newCart = this.state.cart
-    let filteredCart = newCart.filter(item => {
-      return item.id === productToEdit.id
-    })
-
-    console.log(filteredCart)
-
-    // if (this.state.cart)
-    const cartProduct = productToEdit
-    const cartItem = {
-      id: cartProduct.id,
-      name: cartProduct.name,
-      quantity: 1
-    }
-    let editedCart = this.state.cart
-
-    // this.state.cart.map (object, index) {
-    //   if (object.id === productToEdit.id) {
-    //     object.quantity ++
-    //   }
-    // }
-
-    editedCart.push(cartItem)
-
-    const editedMainProductList = this.state.mainProductList
-      .filter(product => product.id !== productToEdit.id)
-      .concat(updatedProduct)
-    this.setState({
-      mainProductList: editedMainProductList,
-      cart: editedCart
-    })
   }
 
   render() {
     let visibleState = null;
     let buttonText = null;
-    let visibleState2 = false
+    // let visibleState2 = false
 
     if (this.state.edit) {
       visibleState = <EditProduct
@@ -201,4 +178,25 @@ function newProductValid(newProduct) {
   }
 }
 
-// function cartBranch
+function cartBranche(newCart, productToEdit) {
+  let filteredCart = newCart.filter(item => {
+    return item.id === productToEdit.id
+  })
+
+  if (filteredCart.length === 1) {
+    newCart.forEach((object) => {
+      if (object.id === productToEdit.id) {
+        object.quantity++
+      }
+    })
+  } else {
+    const cartProduct = productToEdit
+    const cartItem = {
+      id: cartProduct.id,
+      name: cartProduct.name,
+      quantity: 1
+    }
+    newCart.push(cartItem)
+  }
+  return newCart
+}

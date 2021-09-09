@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import Cart from "./Cart"
 import { Container, Row, Col } from "react-bootstrap"
 import ProductControl from "./ProductControl"
 
