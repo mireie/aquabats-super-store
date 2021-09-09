@@ -1,9 +1,11 @@
 import React from "react";
-import { v4 } from 'uuid'
 import PropTypes from "prop-types"
 import ProductForm from "./ProductForm";
 
 function EditProduct(props) {
+  console.log(props)
+  console.log("this is filler")
+  console.log(props.product)
   function handleEditProductFormSubmission(event) {
     event.preventDefault()
     props.editProductFunction(
@@ -11,7 +13,7 @@ function EditProduct(props) {
         name: event.target.name.value,
         description: event.target.description.value,
         quantity: event.target.quantity.value,
-        id: v4()
+        id: props.product.id
       }
     )
   }
@@ -19,7 +21,10 @@ function EditProduct(props) {
   return (
     <React.Fragment>
       <h2>Edit Product</h2>
-      <ProductForm buttonText="Edit Product"></ProductForm>
+      <ProductForm 
+      formSubmissionHandler = {handleEditProductFormSubmission}
+      formButtonText = "Edit"
+      ></ProductForm>
     </React.Fragment>
   )
 }

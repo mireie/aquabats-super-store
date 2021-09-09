@@ -40,7 +40,7 @@ function ProductForm(props) {
         <Button
           variant="primary"
           type="submit">
-          Add Product
+          {props.formButtonText}
         </Button>
       </Form>
     </React.Fragment>
