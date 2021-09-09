@@ -4,7 +4,7 @@ import NewProductForm from "./NewProductForm";
 import { Button } from "react-bootstrap"
 import ProductDetail from "./ProductDetail"
 import EditProduct from "./EditProduct"
-// import Cart from "./Cart"
+import Cart from "./Cart"
 
 class ProductControl extends React.Component {
 
@@ -25,7 +25,12 @@ class ProductControl extends React.Component {
       }],
       selectedProduct: null,
       edit: false,
-      cart: []
+      cart: [{
+        name: "Test 2 Product",
+        description: "Test 2 Description",
+        quantity: 1,
+        id: "test-id-2"
+      }]
     }
   }
 
@@ -124,8 +129,6 @@ class ProductControl extends React.Component {
   render() {
     let visibleState = null;
     let buttonText = null;
-    // let visibleState2 = false
-
     if (this.state.edit) {
       visibleState = <EditProduct
         product={this.state.selectedProduct}
@@ -155,10 +158,11 @@ class ProductControl extends React.Component {
 
     return (
       <React.Fragment>
+        <Cart items={this.state.cart}/>
         {visibleState}
         <Button onClick={this.handleClick} variant="dark" className="mt-3 p-5">{buttonText}</Button>
       </React.Fragment>
-    )
+    ) 
   }
 }
 

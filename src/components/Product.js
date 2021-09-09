@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap"
 
-function Product(props) {
+export default function Product(props) {
   const prod = { name: props.name, description: props.description, quantity: props.quantity, id: props.id }
 
   let subtract = "Subtract 1"
@@ -55,6 +55,4 @@ Product.propTypes = {
   whenProductClicked: PropTypes.func,
   stockPlus: PropTypes.func
 }
-
-export default Product
 

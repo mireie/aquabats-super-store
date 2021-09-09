@@ -3,7 +3,7 @@ import About from "./About";
 import Photo from "./Photo"
 
 function Sidebar() {
-  return (
+    return (
     <React.Fragment>
       <Photo />
       <h1 className="display-1">The Aquabats Super Store</h1>
